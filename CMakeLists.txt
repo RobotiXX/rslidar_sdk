@@ -5,7 +5,11 @@ project(rslidar_sdk)
 #=======================================
 # Custom Point Type (XYZI,XYZIRT, XYZIF, XYZIRTF)
 #=======================================
-set(POINT_TYPE XYZI)
+set(POINT_TYPE XYZIRT CACHE STRING "Point fields: XYZI, XYZIRT, XYZIF, XYZIRTF")
+set_property(CACHE POINT_TYPE PROPERTY STRINGS XYZI XYZIRT XYZIF XYZIRTF)
+if(NOT POINT_TYPE MATCHES "^(XYZI|XYZIRT|XYZIF|XYZIRTF)$")
+  message(FATAL_ERROR "Unsupported POINT_TYPE: ${POINT_TYPE}")
+endif()
 
 option(ENABLE_TRANSFORM "Enable transform functions" OFF)
 if(${ENABLE_TRANSFORM})
