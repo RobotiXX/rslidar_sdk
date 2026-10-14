@@ -10,5 +10,7 @@ build/*
 cmake-build-debug/
 .idea/
 version.h
+__pycache__/
+*.py[cod]
 *.pb.cc
 *.pb.h
